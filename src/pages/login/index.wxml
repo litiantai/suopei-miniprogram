@@ -1,1 +1,23 @@
-<view class="login"><view class="logo">索赔</view><view class="eyebrow">AFTERSALES WORKSPACE</view><view class="title">{{mustChange?'设置个人密码':'欢迎回到工作台'}}</view><view class="subtitle">每一步维修，清晰留痕。</view><view class="card"><block wx:if="!mustChange"><text class="label">员工账号</text><input placeholder="管理员开通的账号" value="{{username}}" data-field="username" bindinput="input"/><text class="label">密码</text><input password placeholder="请输入密码" value="{{password}}" data-field="password" bindinput="input"/><button class="primary" loading="{{busy}}" bindtap="login">登录工作台</button></block><block wx:else><text class="label">新密码（至少10位）</text><input password placeholder="请输入新密码" data-field="newPassword" bindinput="input"/><button class="primary" bindtap="change">保存并重新登录</button></block></view><text class="footnote">仅限已开通的白名单员工账号</text></view>
+<view class="login">
+  <view class="logo">索赔</view>
+  <view class="eyebrow">AFTERSALES WORKSPACE</view>
+  <view class="title">{{pending?'等待主管开通':'欢迎回到工作台'}}</view>
+  <view class="subtitle">每一步维修，清晰留痕。</view>
+  <view class="card" wx:if="!pending">
+    <view class="section-title">使用微信账号登录</view>
+    <view class="muted">首次登录后，由主管核对人员并分配岗位角色。</view>
+    <button class="primary" loading="{{busy}}" disabled="{{busy}}" bindtap="login">微信一键登录</button>
+    <text class="footnote">登录用于识别员工身份，无需设置平台密码。</text>
+  </view>
+  <view class="card" wx:else>
+    <view class="section-title">微信身份已确认</view>
+    <view class="muted">填写真实姓名，方便主管在 Web 员工名单中找到你。</view>
+    <text class="label">员工姓名</text>
+    <input value="{{name}}" placeholder="请输入你的姓名" maxlength="50" bindinput="input"/>
+    <button class="secondary" bindtap="saveName">提交姓名</button>
+    <text class="footnote">身份编号：{{identity}}</text>
+    <button class="primary" loading="{{busy}}" disabled="{{busy}}" bindtap="refresh">刷新开通状态</button>
+    <button class="text-button" bindtap="logout">退出当前微信身份</button>
+  </view>
+  <text class="footnote">角色开通后，仅显示授权范围内的车辆和待办。</text>
+</view>
