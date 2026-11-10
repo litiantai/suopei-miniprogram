@@ -1,0 +1,3 @@
+import fs from 'node:fs';import path from 'node:path';
+function copy(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const source=path.join(dir,entry.name);if(entry.isDirectory())copy(source);else if(!entry.name.endsWith('.ts')){const target=source.replace(/^src/,'dist');fs.mkdirSync(path.dirname(target),{recursive:true});fs.copyFileSync(source,target);}}}copy('src');
+const config=JSON.parse(fs.readFileSync(fs.existsSync('config.local.json')?'config.local.json':'config.example.json','utf8'));if(!/^https:\/\//.test(config.apiBase))throw new Error('小程序正式接口必须使用 HTTPS');fs.writeFileSync('dist/config.js','module.exports = '+JSON.stringify(config)+';\n');console.log('小程序已构建到 dist/');
