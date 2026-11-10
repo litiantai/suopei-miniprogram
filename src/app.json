@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/tasks/index",
+    "pages/detail/index",
+    "pages/create/index",
+    "pages/dashboard/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "索赔 · 售后工作台",
+    "navigationBarBackgroundColor": "#205c4f",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f4f7f3"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
