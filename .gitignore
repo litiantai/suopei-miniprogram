@@ -1,0 +1,13 @@
+node_modules/
+dist/
+project.private.config.json
+.DS_Store
+config.local.json
+
+# 保留本地原始空白模板，发布使用 src/ 与 dist/
+/app.js
+/app.json
+/app.wxss
+/sitemap.json
+/pages/
+/utils/
