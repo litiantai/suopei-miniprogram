@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "build": "tsc && node scripts/copy-assets.mjs",
+    "build": "npm run check:templates && tsc && node scripts/copy-assets.mjs",
     "generate:api": "node scripts/generate-api.mjs",
-    "check:contract": "node scripts/generate-api.mjs --check"
+    "check:contract": "node scripts/generate-api.mjs --check",
+    "check:templates": "node scripts/check-templates.mjs"
   },
   "devDependencies": {
     "typescript": "^5.9.3",
