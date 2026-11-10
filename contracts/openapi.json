@@ -1,0 +1,2110 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "索赔售后平台 API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/api/v1"
+    }
+  ],
+  "paths": {
+    "/auth/me": {
+      "get": {
+        "summary": "当前身份",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "账号登录",
+        "security": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/auth/password": {
+      "post": {
+        "summary": "修改密码",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "summary": "退出登录",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/directory": {
+      "get": {
+        "summary": "派工人员目录",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/repair-types": {
+      "get": {
+        "summary": "维修类型",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      },
+      "post": {
+        "summary": "新增类型",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepairType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/repair-types/{id}": {
+      "put": {
+        "summary": "修改类型",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepairType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "用户白名单",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      },
+      "post": {
+        "summary": "新增用户",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "put": {
+        "summary": "修改用户",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/roles": {
+      "get": {
+        "summary": "角色列表",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/roles/{id}": {
+      "put": {
+        "summary": "配置角色",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/permissions": {
+      "get": {
+        "summary": "权限目录",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/work-orders": {
+      "get": {
+        "summary": "工单查询",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      },
+      "post": {
+        "summary": "登记车辆",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/work-orders/{id}": {
+      "get": {
+        "summary": "工单详情",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/work-orders/{id}/commands": {
+      "post": {
+        "summary": "业务流转命令",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Command"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/dashboard": {
+      "get": {
+        "summary": "看板",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/attachments/grant": {
+      "post": {
+        "summary": "申请直传凭证",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/attachments/{id}/complete": {
+      "post": {
+        "summary": "确认附件",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/attachments/{id}/url": {
+      "get": {
+        "summary": "附件预览下载",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/attachments/{id}/retry": {
+      "post": {
+        "summary": "重试视频预览",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/exports": {
+      "post": {
+        "summary": "异步导出",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/exports.xlsx": {
+      "get": {
+        "summary": "筛选台账下载",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/jobs": {
+      "get": {
+        "summary": "任务状态",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/jobs/{id}/download": {
+      "get": {
+        "summary": "下载导出",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "session": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "sp_session"
+      },
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "WorkOrder": {
+        "type": "object",
+        "properties": {
+          "plate": {},
+          "model": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "vin": {
+            "default": "",
+            "type": "string",
+            "maxLength": 32
+          },
+          "customer": {
+            "default": "",
+            "type": "string",
+            "maxLength": 100
+          },
+          "phone": {
+            "default": "",
+            "type": "string",
+            "maxLength": 32
+          },
+          "advisorId": {
+            "default": "",
+            "type": "string"
+          },
+          "team": {
+            "default": "",
+            "type": "string",
+            "maxLength": 100
+          },
+          "entryAt": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "workType": {
+            "default": "常规维修",
+            "type": "string",
+            "enum": [
+              "快喷",
+              "常规维修",
+              "重度事故"
+            ]
+          },
+          "typeIds": {
+            "minItems": 1,
+            "maxItems": 30,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "summary": {
+            "default": "",
+            "type": "string",
+            "maxLength": 5000
+          },
+          "insurer": {
+            "default": "",
+            "type": "string",
+            "maxLength": 100
+          },
+          "adjuster": {
+            "default": "",
+            "type": "string",
+            "maxLength": 100
+          },
+          "claimNo": {
+            "default": "",
+            "type": "string",
+            "maxLength": 100
+          },
+          "estimateValue": {
+            "default": 0,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100000000
+          },
+          "lossAmount": {
+            "default": 0,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100000000
+          },
+          "hasClaimSheet": {
+            "default": false,
+            "type": "boolean"
+          },
+          "claimAttachmentIds": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "claimApplicable": {
+            "default": true,
+            "type": "boolean"
+          },
+          "partsRequired": {
+            "default": true,
+            "type": "boolean"
+          },
+          "partsEta": {
+            "default": null,
+            "nullable": true,
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "partsNote": {
+            "default": "",
+            "type": "string",
+            "maxLength": 2000
+          },
+          "plannedStartAt": {
+            "default": null,
+            "nullable": true,
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "plannedFinishAt": {
+            "default": null,
+            "nullable": true,
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "promisedAt": {
+            "default": null,
+            "nullable": true,
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "note": {
+            "default": "",
+            "type": "string",
+            "maxLength": 5000
+          },
+          "id": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          },
+          "phase": {
+            "type": "string",
+            "enum": [
+              "intake",
+              "dispatch",
+              "repair",
+              "acceptance",
+              "completed"
+            ]
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "typeId": {
+                  "type": "string"
+                },
+                "typeName": {
+                  "type": "string"
+                },
+                "assigneeId": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "pending",
+                    "working",
+                    "submitted",
+                    "rework",
+                    "accepted"
+                  ]
+                },
+                "requirements": {
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "type": "boolean"
+                    },
+                    "remark": {
+                      "type": "boolean"
+                    },
+                    "images": {
+                      "type": "boolean"
+                    },
+                    "videos": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "description",
+                    "remark",
+                    "images",
+                    "videos"
+                  ],
+                  "additionalProperties": false
+                },
+                "paintEnabled": {
+                  "type": "boolean"
+                },
+                "hint": {
+                  "type": "string"
+                },
+                "startedAt": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "submittedAt": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "report": {
+                  "nullable": true,
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "remark": {
+                      "type": "string"
+                    },
+                    "attachmentIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "paintQuantity": {
+                      "type": "number"
+                    },
+                    "smallPart": {
+                      "type": "boolean"
+                    },
+                    "at": {
+                      "type": "string"
+                    },
+                    "by": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "description",
+                    "remark",
+                    "attachmentIds",
+                    "paintQuantity",
+                    "smallPart",
+                    "at",
+                    "by"
+                  ],
+                  "additionalProperties": false
+                },
+                "reports": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "remark": {
+                        "type": "string"
+                      },
+                      "attachmentIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "paintQuantity": {
+                        "type": "number"
+                      },
+                      "smallPart": {
+                        "type": "boolean"
+                      },
+                      "at": {
+                        "type": "string"
+                      },
+                      "by": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "description",
+                      "remark",
+                      "attachmentIds",
+                      "paintQuantity",
+                      "smallPart",
+                      "at",
+                      "by"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "draft": {
+                  "nullable": true,
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "remark": {
+                      "type": "string"
+                    },
+                    "attachmentIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "paintQuantity": {
+                      "type": "number"
+                    },
+                    "smallPart": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "description",
+                    "remark",
+                    "attachmentIds",
+                    "paintQuantity",
+                    "smallPart"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "id",
+                "typeId",
+                "typeName",
+                "assigneeId",
+                "status",
+                "requirements",
+                "paintEnabled",
+                "hint",
+                "startedAt",
+                "submittedAt",
+                "report",
+                "reports",
+                "draft"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "createdBy": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "checkedAt": {
+            "nullable": true,
+            "type": "string"
+          },
+          "inspectionNote": {
+            "type": "string"
+          },
+          "claimHandledAt": {
+            "nullable": true,
+            "type": "string"
+          },
+          "partsReadyAt": {
+            "nullable": true,
+            "type": "string"
+          },
+          "dispatchedAt": {
+            "nullable": true,
+            "type": "string"
+          },
+          "startedAt": {
+            "nullable": true,
+            "type": "string"
+          },
+          "repairCompletedAt": {
+            "nullable": true,
+            "type": "string"
+          },
+          "acceptedAt": {
+            "nullable": true,
+            "type": "string"
+          },
+          "deliveredAt": {
+            "nullable": true,
+            "type": "string"
+          },
+          "needsReview": {
+            "type": "boolean"
+          },
+          "cancelled": {
+            "type": "boolean"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "kind": {
+                  "type": "string"
+                },
+                "at": {
+                  "type": "string"
+                },
+                "actorId": {
+                  "type": "string"
+                },
+                "actorName": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "object",
+                  "additionalProperties": {}
+                }
+              },
+              "required": [
+                "id",
+                "kind",
+                "at",
+                "actorId",
+                "actorName",
+                "note",
+                "data"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "legacy": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        },
+        "required": [
+          "plate",
+          "model",
+          "vin",
+          "customer",
+          "phone",
+          "advisorId",
+          "team",
+          "entryAt",
+          "workType",
+          "typeIds",
+          "summary",
+          "insurer",
+          "adjuster",
+          "claimNo",
+          "estimateValue",
+          "lossAmount",
+          "hasClaimSheet",
+          "claimAttachmentIds",
+          "claimApplicable",
+          "partsRequired",
+          "partsEta",
+          "partsNote",
+          "plannedStartAt",
+          "plannedFinishAt",
+          "promisedAt",
+          "note",
+          "id",
+          "vehicleId",
+          "code",
+          "version",
+          "phase",
+          "tasks",
+          "createdBy",
+          "createdAt",
+          "updatedAt",
+          "checkedAt",
+          "inspectionNote",
+          "claimHandledAt",
+          "partsReadyAt",
+          "dispatchedAt",
+          "startedAt",
+          "repairCompletedAt",
+          "acceptedAt",
+          "deliveredAt",
+          "needsReview",
+          "cancelled",
+          "events"
+        ],
+        "additionalProperties": false
+      },
+      "Task": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeId": {
+            "type": "string"
+          },
+          "typeName": {
+            "type": "string"
+          },
+          "assigneeId": {
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "working",
+              "submitted",
+              "rework",
+              "accepted"
+            ]
+          },
+          "requirements": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "boolean"
+              },
+              "remark": {
+                "type": "boolean"
+              },
+              "images": {
+                "type": "boolean"
+              },
+              "videos": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "description",
+              "remark",
+              "images",
+              "videos"
+            ],
+            "additionalProperties": false
+          },
+          "paintEnabled": {
+            "type": "boolean"
+          },
+          "hint": {
+            "type": "string"
+          },
+          "startedAt": {
+            "nullable": true,
+            "type": "string"
+          },
+          "submittedAt": {
+            "nullable": true,
+            "type": "string"
+          },
+          "report": {
+            "nullable": true,
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "remark": {
+                "type": "string"
+              },
+              "attachmentIds": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "paintQuantity": {
+                "type": "number"
+              },
+              "smallPart": {
+                "type": "boolean"
+              },
+              "at": {
+                "type": "string"
+              },
+              "by": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "description",
+              "remark",
+              "attachmentIds",
+              "paintQuantity",
+              "smallPart",
+              "at",
+              "by"
+            ],
+            "additionalProperties": false
+          },
+          "reports": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "remark": {
+                  "type": "string"
+                },
+                "attachmentIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "paintQuantity": {
+                  "type": "number"
+                },
+                "smallPart": {
+                  "type": "boolean"
+                },
+                "at": {
+                  "type": "string"
+                },
+                "by": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "description",
+                "remark",
+                "attachmentIds",
+                "paintQuantity",
+                "smallPart",
+                "at",
+                "by"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "draft": {
+            "nullable": true,
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "remark": {
+                "type": "string"
+              },
+              "attachmentIds": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "paintQuantity": {
+                "type": "number"
+              },
+              "smallPart": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "description",
+              "remark",
+              "attachmentIds",
+              "paintQuantity",
+              "smallPart"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "typeId",
+          "typeName",
+          "assigneeId",
+          "status",
+          "requirements",
+          "paintEnabled",
+          "hint",
+          "startedAt",
+          "submittedAt",
+          "report",
+          "reports",
+          "draft"
+        ],
+        "additionalProperties": false
+      },
+      "OrderInput": {
+        "type": "object",
+        "properties": {
+          "plate": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 20
+          },
+          "model": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "vin": {
+            "default": "",
+            "type": "string",
+            "maxLength": 32
+          },
+          "customer": {
+            "default": "",
+            "type": "string",
+            "maxLength": 100
+          },
+          "phone": {
+            "default": "",
+            "type": "string",
+            "maxLength": 32
+          },
+          "advisorId": {
+            "default": "",
+            "type": "string"
+          },
+          "team": {
+            "default": "",
+            "type": "string",
+            "maxLength": 100
+          },
+          "entryAt": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "workType": {
+            "default": "常规维修",
+            "type": "string",
+            "enum": [
+              "快喷",
+              "常规维修",
+              "重度事故"
+            ]
+          },
+          "typeIds": {
+            "minItems": 1,
+            "maxItems": 30,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "summary": {
+            "default": "",
+            "type": "string",
+            "maxLength": 5000
+          },
+          "insurer": {
+            "default": "",
+            "type": "string",
+            "maxLength": 100
+          },
+          "adjuster": {
+            "default": "",
+            "type": "string",
+            "maxLength": 100
+          },
+          "claimNo": {
+            "default": "",
+            "type": "string",
+            "maxLength": 100
+          },
+          "estimateValue": {
+            "default": 0,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100000000
+          },
+          "lossAmount": {
+            "default": 0,
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100000000
+          },
+          "hasClaimSheet": {
+            "default": false,
+            "type": "boolean"
+          },
+          "claimAttachmentIds": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "claimApplicable": {
+            "default": true,
+            "type": "boolean"
+          },
+          "partsRequired": {
+            "default": true,
+            "type": "boolean"
+          },
+          "partsEta": {
+            "default": null,
+            "nullable": true,
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "partsNote": {
+            "default": "",
+            "type": "string",
+            "maxLength": 2000
+          },
+          "plannedStartAt": {
+            "default": null,
+            "nullable": true,
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "plannedFinishAt": {
+            "default": null,
+            "nullable": true,
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "promisedAt": {
+            "default": null,
+            "nullable": true,
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "note": {
+            "default": "",
+            "type": "string",
+            "maxLength": 5000
+          }
+        },
+        "required": [
+          "plate",
+          "model",
+          "entryAt",
+          "typeIds"
+        ]
+      },
+      "Command": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "edit",
+              "check",
+              "milestones",
+              "assign",
+              "dispatch",
+              "start",
+              "report",
+              "accept",
+              "reject",
+              "handover",
+              "note",
+              "reconcile",
+              "cancel"
+            ]
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true,
+            "maximum": 9007199254740991
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 100
+          },
+          "data": {
+            "default": {},
+            "type": "object",
+            "additionalProperties": {}
+          }
+        },
+        "required": [
+          "action",
+          "version",
+          "requestId"
+        ]
+      },
+      "RepairType": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "active": {
+            "default": true,
+            "type": "boolean"
+          },
+          "requirements": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "boolean"
+              },
+              "remark": {
+                "type": "boolean"
+              },
+              "images": {
+                "type": "boolean"
+              },
+              "videos": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "description",
+              "remark",
+              "images",
+              "videos"
+            ]
+          },
+          "paintEnabled": {
+            "default": false,
+            "type": "boolean"
+          },
+          "hint": {
+            "default": "",
+            "type": "string",
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "name",
+          "requirements"
+        ]
+      },
+      "UserInput": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_.-]{3,40}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "roleIds": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "allow": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "orders.read_all",
+                "intake.read",
+                "intake.execute",
+                "dispatch.read",
+                "dispatch.execute",
+                "repair.read",
+                "repair.execute",
+                "acceptance.read",
+                "acceptance.execute",
+                "handover.execute",
+                "dashboard.view",
+                "dashboard.all",
+                "attachments.download",
+                "exports.execute",
+                "users.manage",
+                "types.manage",
+                "sensitive.read"
+              ]
+            }
+          },
+          "deny": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "orders.read_all",
+                "intake.read",
+                "intake.execute",
+                "dispatch.read",
+                "dispatch.execute",
+                "repair.read",
+                "repair.execute",
+                "acceptance.read",
+                "acceptance.execute",
+                "handover.execute",
+                "dashboard.view",
+                "dashboard.all",
+                "attachments.download",
+                "exports.execute",
+                "users.manage",
+                "types.manage",
+                "sensitive.read"
+              ]
+            }
+          },
+          "active": {
+            "default": true,
+            "type": "boolean"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "username",
+          "name",
+          "roleIds"
+        ]
+      },
+      "RepairReport": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "type": "string",
+            "maxLength": 10000
+          },
+          "remark": {
+            "default": "",
+            "type": "string",
+            "maxLength": 5000
+          },
+          "attachmentIds": {
+            "default": [],
+            "maxItems": 50,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "paintQuantity": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "smallPart": {
+            "default": false,
+            "type": "boolean"
+          },
+          "submit": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "taskId"
+        ]
+      }
+    }
+  }
+}
