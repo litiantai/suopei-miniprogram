@@ -1,0 +1,39 @@
+// 自动生成；来源 API 1.0.0，不要手工修改。
+export const CONTRACT_VERSION="1.0.0";
+export const CONTRACT_HASH="e4ac6551b965257136640e493727d746f02849b63d713f6381ad1597674b94e4";
+export type WorkOrder={"plate":unknown;"model":string;"vin":string;"customer":string;"phone":string;"advisorId":string;"team":string;"entryAt":string;"workType":"快喷"|"常规维修"|"重度事故";"typeIds":(string)[];"summary":string;"insurer":string;"adjuster":string;"claimNo":string;"estimateValue":number;"lossAmount":number;"hasClaimSheet":boolean;"claimAttachmentIds":(string)[];"claimApplicable":boolean;"partsRequired":boolean;"partsEta":string;"partsNote":string;"plannedStartAt":string;"plannedFinishAt":string;"promisedAt":string;"note":string;"id":string;"vehicleId":string;"code":string;"version":number;"phase":"intake"|"dispatch"|"repair"|"acceptance"|"completed";"tasks":({"id":string;"typeId":string;"typeName":string;"assigneeId":string;"status":"pending"|"working"|"submitted"|"rework"|"accepted";"requirements":{"description":boolean;"remark":boolean;"images":boolean;"videos":boolean};"paintEnabled":boolean;"hint":string;"startedAt":string;"submittedAt":string;"report":{"id":string;"description":string;"remark":string;"attachmentIds":(string)[];"paintQuantity":number;"smallPart":boolean;"at":string;"by":string};"reports":({"id":string;"description":string;"remark":string;"attachmentIds":(string)[];"paintQuantity":number;"smallPart":boolean;"at":string;"by":string})[];"draft":{"description":string;"remark":string;"attachmentIds":(string)[];"paintQuantity":number;"smallPart":boolean}})[];"createdBy":string;"createdAt":string;"updatedAt":string;"checkedAt":string;"inspectionNote":string;"claimHandledAt":string;"partsReadyAt":string;"dispatchedAt":string;"startedAt":string;"repairCompletedAt":string;"acceptedAt":string;"deliveredAt":string;"needsReview":boolean;"cancelled":boolean;"events":({"id":string;"kind":string;"at":string;"actorId":string;"actorName":string;"note":string;"data":{}})[];"legacy"?:{}};
+export type Task={"id":string;"typeId":string;"typeName":string;"assigneeId":string;"status":"pending"|"working"|"submitted"|"rework"|"accepted";"requirements":{"description":boolean;"remark":boolean;"images":boolean;"videos":boolean};"paintEnabled":boolean;"hint":string;"startedAt":string;"submittedAt":string;"report":{"id":string;"description":string;"remark":string;"attachmentIds":(string)[];"paintQuantity":number;"smallPart":boolean;"at":string;"by":string};"reports":({"id":string;"description":string;"remark":string;"attachmentIds":(string)[];"paintQuantity":number;"smallPart":boolean;"at":string;"by":string})[];"draft":{"description":string;"remark":string;"attachmentIds":(string)[];"paintQuantity":number;"smallPart":boolean}};
+export type OrderInput={"plate":string;"model":string;"vin"?:string;"customer"?:string;"phone"?:string;"advisorId"?:string;"team"?:string;"entryAt":string;"workType"?:"快喷"|"常规维修"|"重度事故";"typeIds":(string)[];"summary"?:string;"insurer"?:string;"adjuster"?:string;"claimNo"?:string;"estimateValue"?:number;"lossAmount"?:number;"hasClaimSheet"?:boolean;"claimAttachmentIds"?:(string)[];"claimApplicable"?:boolean;"partsRequired"?:boolean;"partsEta"?:string;"partsNote"?:string;"plannedStartAt"?:string;"plannedFinishAt"?:string;"promisedAt"?:string;"note"?:string};
+export type Command={"action":"edit"|"check"|"milestones"|"assign"|"dispatch"|"start"|"report"|"accept"|"reject"|"handover"|"note"|"reconcile"|"cancel";"version":number;"requestId":string;"data"?:{}};
+export type RepairType={"id"?:string;"name":string;"active"?:boolean;"requirements":{"description":boolean;"remark":boolean;"images":boolean;"videos":boolean};"paintEnabled"?:boolean;"hint"?:string};
+export type UserInput={"username":string;"name":string;"roleIds":(string)[];"allow"?:("orders.read_all"|"intake.read"|"intake.execute"|"dispatch.read"|"dispatch.execute"|"repair.read"|"repair.execute"|"acceptance.read"|"acceptance.execute"|"handover.execute"|"dashboard.view"|"dashboard.all"|"attachments.download"|"exports.execute"|"users.manage"|"types.manage"|"sensitive.read")[];"deny"?:("orders.read_all"|"intake.read"|"intake.execute"|"dispatch.read"|"dispatch.execute"|"repair.read"|"repair.execute"|"acceptance.read"|"acceptance.execute"|"handover.execute"|"dashboard.view"|"dashboard.all"|"attachments.download"|"exports.execute"|"users.manage"|"types.manage"|"sensitive.read")[];"active"?:boolean;"password"?:string};
+export type RepairReport={"taskId":string;"description"?:string;"remark"?:string;"attachmentIds"?:(string)[];"paintQuantity"?:number;"smallPart"?:boolean;"submit"?:boolean};
+export const ENDPOINTS={
+  "GET /auth/me": "/auth/me",
+  "POST /auth/login": "/auth/login",
+  "POST /auth/password": "/auth/password",
+  "POST /auth/logout": "/auth/logout",
+  "GET /directory": "/directory",
+  "GET /repair-types": "/repair-types",
+  "POST /repair-types": "/repair-types",
+  "PUT /repair-types/{id}": "/repair-types/{id}",
+  "GET /users": "/users",
+  "POST /users": "/users",
+  "PUT /users/{id}": "/users/{id}",
+  "GET /roles": "/roles",
+  "PUT /roles/{id}": "/roles/{id}",
+  "GET /permissions": "/permissions",
+  "GET /work-orders": "/work-orders",
+  "POST /work-orders": "/work-orders",
+  "GET /work-orders/{id}": "/work-orders/{id}",
+  "POST /work-orders/{id}/commands": "/work-orders/{id}/commands",
+  "GET /dashboard": "/dashboard",
+  "POST /attachments/grant": "/attachments/grant",
+  "POST /attachments/{id}/complete": "/attachments/{id}/complete",
+  "GET /attachments/{id}/url": "/attachments/{id}/url",
+  "POST /attachments/{id}/retry": "/attachments/{id}/retry",
+  "POST /exports": "/exports",
+  "GET /exports.xlsx": "/exports.xlsx",
+  "GET /jobs": "/jobs",
+  "GET /jobs/{id}/download": "/jobs/{id}/download"
+} as const;
