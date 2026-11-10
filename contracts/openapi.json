@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "索赔售后平台 API",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "servers": [
     {
@@ -43,8 +43,63 @@
     },
     "/auth/login": {
       "post": {
-        "summary": "账号登录",
+        "summary": "Web 账号登录",
         "security": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/auth/wechat": {
+      "post": {
+        "summary": "微信一键登录",
+        "security": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功"
+          },
+          "400": {
+            "description": "输入校验失败"
+          },
+          "401": {
+            "description": "登录失效"
+          },
+          "403": {
+            "description": "权限不足"
+          },
+          "409": {
+            "description": "版本或流转状态冲突"
+          }
+        }
+      }
+    },
+    "/auth/wechat/profile": {
+      "post": {
+        "summary": "待开通员工提交姓名",
+        "security": [
+          {
+            "session": []
+          },
+          {
+            "bearer": []
+          }
+        ],
         "parameters": [],
         "responses": {
           "200": {
